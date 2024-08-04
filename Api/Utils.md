@@ -1,0 +1,1 @@
+dotnet ef dbcontext scaffold "server=localhost;port=3306;database=apiadmin;default command timeout=0;user=root;password=admin;SslMode=none; Convert Zero Datetime=True;" MySql.EntityFrameworkCore -o Models --force --no-onconfiguring --context AppDbContext
