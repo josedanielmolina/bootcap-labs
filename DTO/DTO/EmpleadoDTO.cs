@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DTO.DTO.ApiAdmin
+﻿
+namespace DTO.DTO
 {
     public class EmpleadoDTO
     {
@@ -16,6 +11,8 @@ namespace DTO.DTO.ApiAdmin
 
         public string Cargo { get; set; }
 
-        public string CodigoRh { get; set; }
+        public string CodigoRH { get; set; }
+
+        public int AreaEmpresaId { get; set; }
     }
 }

@@ -1,0 +1,45 @@
+
+<div class="container mx-auto mt-5">
+
+    <button class="text-white bg-green-500 hover:bg-green-700 px-3 py-1 rounded mr-2" (click)="onAtras()">Atras</button>
+
+    <h1>{{ isCreateMode ? 'Crear' : 'Actualizar'  }} Empleado</h1>
+
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="grid grid-cols-1 gap-4">
+        <mat-form-field class="w-full">
+          <mat-label>Nombres</mat-label>
+          <input matInput type="text" id="nombres" formControlName="nombres">
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Correo</mat-label>
+          <input matInput type="email" id="correo" formControlName="correo">
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Cargo</mat-label>
+          <input matInput type="text" id="cargo" formControlName="cargo">
+        </mat-form-field>
+
+        <mat-form-field *ngIf="!isCreateMode" class="w-full">
+          <mat-label>Código RH</mat-label>
+          <input matInput type="text" id="codigoRH" formControlName="codigoRH">
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Área de Empresa</mat-label>
+          <mat-select formControlName="areaEmpresaId">
+            <mat-option *ngFor="let option of areasEmpresa" [value]="option.id">{{ option.nombre }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="formulario.invalid" class="self-end">
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+<pre>  {{ formulario.value | json }}</pre>

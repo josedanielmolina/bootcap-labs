@@ -13,7 +13,7 @@ public partial class Empleado
 
     public string Cargo { get; set; }
 
-    public string CodigoRh { get; set; }
+    public string CodigoRH { get; set; }
 
     public int AreaEmpresaId { get; set; }
 

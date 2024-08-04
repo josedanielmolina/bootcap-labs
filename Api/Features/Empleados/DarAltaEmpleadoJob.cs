@@ -1,5 +1,5 @@
 ﻿using ApiAdmin.Repository.Base;
-using DTO.DTO.ApiAdmin;
+using DTO.DTO;
 using DTO.Event;
 using Hangfire;
 using HttpCall;

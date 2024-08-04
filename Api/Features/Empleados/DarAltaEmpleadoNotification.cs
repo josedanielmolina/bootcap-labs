@@ -1,6 +1,6 @@
 ﻿using ApiAdmin.Models;
 using ApiAdmin.Repository.Base;
-using DTO.DTO.ApiAdmin;
+using DTO.DTO;
 using DTO.Event;
 using HttpCall;
 using System.Text.Json;
@@ -15,10 +15,10 @@ namespace ApiAdmin.Features.Empleados
             {
                 Correo = empleado.Correo,
                 Cargo = empleado.Cargo,
-                CodigoRH = empleado.CodigoRh
+                CodigoRH = empleado.CodigoRH
             };
 
-            var backlogsEvent = new BacklogsEvent()
+            var backlogsEvent = new Backlogsevent()
             {
                 CreateAt = DateTime.Now,
                 EventType = (int)EventsEnum.DarAltaEmpleado,

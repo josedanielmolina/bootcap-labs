@@ -1,5 +1,4 @@
-﻿
-namespace DTO.DTO.ApiAdmin
+﻿namespace DTO.DTO
 {
     public enum EventsEnum
     {

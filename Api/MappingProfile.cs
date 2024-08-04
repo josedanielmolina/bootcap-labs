@@ -1,7 +1,6 @@
 ﻿using ApiAdmin.Models;
 using AutoMapper;
-using DTO.DTO.ApiAdmin;
-using DTO.DTO.ApiAuth;
+using DTO.DTO;
 
 
 namespace ApiAdmin
@@ -11,6 +10,7 @@ namespace ApiAdmin
         public MappingProfile()
         {
             CreateMap<Empleado, EmpleadoDTO>().ReverseMap();
+            CreateMap<Areasempresa, AreasempresaDTO>().ReverseMap();
         }
     }
 }

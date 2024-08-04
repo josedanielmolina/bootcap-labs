@@ -5,8 +5,9 @@ namespace ApiAdmin.Repository.Base
 {
     public interface IUnitOfWork
     {
-        IRepository<Empleado> Empleado { get; set; }
-        IRepository<BacklogsEvent> BacklogsEvent { get; set; }
+        IRepository<Empleado> EmpleadoRepository { get; set; }
+        IRepository<Backlogsevent> BacklogsEvent { get; set; }
+        IRepository<Areasempresa> AreasempresaRepository { get; set; }
 
         IDbContextTransaction BeginTransaction();
         void Dispose();
@@ -17,14 +18,16 @@ namespace ApiAdmin.Repository.Base
     {
         private readonly AppDbContext _context;
 
-        public IRepository<Empleado> Empleado { get; set; }
-        public IRepository<BacklogsEvent> BacklogsEvent { get; set; }
+        public IRepository<Empleado> EmpleadoRepository { get; set; }
+        public IRepository<Backlogsevent> BacklogsEvent { get; set; }
+        public IRepository<Areasempresa> AreasempresaRepository { get; set; }
 
         public UnitOfWork(AppDbContext context)
         {
             _context = context;
-            Empleado = new Repository<Empleado>(context);
-            BacklogsEvent = new Repository<BacklogsEvent>(context);
+            EmpleadoRepository = new Repository<Empleado>(context);
+            BacklogsEvent = new Repository<Backlogsevent>(context);
+            AreasempresaRepository = new Repository<Areasempresa>(context);
         }
 
         public async Task SaveChangesAsync()

@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
-import { FirstFormComponent } from './pages/first-form/first-form.component';
+import { ListEmpleadosComponent } from './pages/Empleados/list-empleados/list-empleados.component';
+import { FormEmpleadoComponent } from './pages/Empleados/form-empleado/form-empleado.component';
 
 export const routes: Routes = [
-  { path: 'first-form', component: FirstFormComponent }
+    // EMPRESA
+    { path: 'empleados', component: ListEmpleadosComponent },
+    { path: 'empleado/:codigoRH', component: FormEmpleadoComponent }
 ];

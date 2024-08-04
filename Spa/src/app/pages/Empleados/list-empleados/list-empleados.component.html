@@ -1,0 +1,38 @@
+<div class="container mx-auto p-4">
+
+    <button class="text-white bg-green-500 hover:bg-green-700 px-3 py-1 rounded mr-2" (click)="onCreateEmpleado()">Crear Empleado</button>
+
+    <table mat-table [dataSource]="dataSource" class="min-w-full divide-y divide-gray-200">
+      <!-- IdRH Column -->
+      <ng-container matColumnDef="codigoRh">
+        <th mat-header-cell *matHeaderCellDef class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> IdRH </th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap"> {{element.codigoRh}} </td>
+      </ng-container>
+
+      <!-- Nombre Column -->
+      <ng-container matColumnDef="nombres">
+        <th mat-header-cell *matHeaderCellDef class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Nombre </th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap"> {{element.nombres}} </td>
+      </ng-container>
+
+      <!-- Cargo Column -->
+      <ng-container matColumnDef="cargo">
+        <th mat-header-cell *matHeaderCellDef class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Cargo </th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap"> {{element.cargo}} </td>
+      </ng-container>
+
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"> Acciones </th>
+        <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap">
+          <button class="text-white bg-blue-500 hover:bg-blue-700 px-3 py-1 rounded mr-2" (click)="onEditar(element)">Editar</button>
+          <button class="text-white bg-red-500 hover:bg-red-700 px-3 py-1 rounded" (click)="onEliminar(element)">Eliminar</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" class="bg-gray-100"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="bg-white"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>

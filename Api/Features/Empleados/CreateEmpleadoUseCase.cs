@@ -2,7 +2,7 @@
 using ApiAdmin.Models;
 using ApiAdmin.Repository.Base;
 using AutoMapper;
-using DTO.DTO.ApiAdmin;
+using DTO.DTO;
 using DTO.Event;
 using HttpCall;
 
@@ -20,9 +20,9 @@ namespace ApiAdmin.Features.Empleados
                 try
                 {
                     var entity = _mapper.Map<Empleado>(empleado);
-                    entity.CodigoRh = Guid.NewGuid().ToString();
+                    entity.CodigoRH = Guid.NewGuid().ToString();
 
-                    await _unitOfWork.Empleado.Add(entity);
+                    await _unitOfWork.EmpleadoRepository.Add(entity);
                     await _unitOfWork.SaveChangesAsync();
                     transaction.Commit();
                 }

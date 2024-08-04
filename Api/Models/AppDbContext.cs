@@ -57,7 +57,7 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Cargo)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.CodigoRh)
+            entity.Property(e => e.CodigoRH)
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("CodigoRH");
