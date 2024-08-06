@@ -1,0 +1,31 @@
+<mat-sidenav-container class="h-screen">
+    <mat-sidenav mode="side" opened class="w-64 bg-azure-500 text-white">
+      <div class="p-4 text-center text-xl font-bold bg-blue-600">
+        JoJo App
+      </div>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]=" '' " class="hover:bg-blue-500">
+          <mat-icon>home</mat-icon>
+          <span class="ml-2">Home</span>
+        </a>
+        <a mat-list-item [routerLink]=" 'empleados' " class="hover:bg-blue-500">
+            <mat-icon>badge</mat-icon>
+            <span class="ml-2">Empleados</span>
+        </a>
+
+        <!-- <a mat-list-item href="#" class="hover:bg-blue-500">
+          <mat-icon>info</mat-icon>
+          <span class="ml-2">About</span>
+        </a>
+        <a mat-list-item href="#" class="hover:bg-blue-500">
+          <mat-icon>contact_mail</mat-icon>
+          <span class="ml-2">Contact</span>
+        </a> -->
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div class="p-4 bg-white">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
