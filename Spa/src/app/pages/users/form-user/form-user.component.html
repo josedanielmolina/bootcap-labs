@@ -1,0 +1,31 @@
+<div class="container mx-auto mt-5">
+    <h1 class="text-2xl font-bold mb-4">{{ isEditMode ? 'Editar Usuario' : 'Crear Usuario' }}</h1>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Nombre</mat-label>
+          <input matInput id="nombre" type="text" formControlName="nombre" />
+          <mat-error *ngIf="userForm.get('nombre')?.invalid && userForm.get('nombre')?.touched">
+            El nombre es requerido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="mb-4">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Correo</mat-label>
+          <input matInput id="correo" type="email" formControlName="correo" />
+          <mat-error *ngIf="userForm.get('correo')?.invalid && userForm.get('correo')?.touched">
+            El correo es requerido y debe ser válido.
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="flex justify-end">
+        <button mat-button type="button" (click)="onCancel()" class="mr-2 bg-gray-500 text-white px-4 py-2 rounded">Cancelar</button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid">
+          {{ isEditMode ? 'Actualizar' : 'Crear' }}
+        </button>
+      </div>
+    </form>
+  </div>

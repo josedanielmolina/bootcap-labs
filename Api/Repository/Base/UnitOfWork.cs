@@ -1,4 +1,4 @@
-﻿using ApiAdmin.Models;
+﻿using Api.Models;
 using Microsoft.EntityFrameworkCore.Storage;
 
 namespace ApiAdmin.Repository.Base

@@ -7,8 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MessageService } from '../../../Core/Mensajes/message.service';
-import { SeguridadService } from '../../../Core/Services/seguridad.service';
-import { Router } from '@angular/router';
+import { AuthService } from '../../../Core/Services/auth.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-login',
@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
     imports: [
         ReactiveFormsModule,
         CommonModule,
+        RouterModule,
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
 
     private readonly fb = inject(FormBuilder);
     private readonly messageService = inject(MessageService);
-    private readonly seguridadService = inject(SeguridadService);
+    private readonly seguridadService = inject(AuthService);
     private readonly router = inject(Router);
 
 
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
 
     initForm() {
         this.formulario = this.fb.group({
-            usuario: ['', [Validators.required]],
+            correo: ['', [Validators.required]],
             contrasena: ['', Validators.required]
         });
     }
@@ -58,7 +59,7 @@ export class LoginComponent implements OnInit {
                             this.seguridadService.guardarToken(resp);
                             this.router.navigate(['empleados']);
                         },
-                        error: (e) => this.messageService.showErrorMessage(e.error.Mensaje)
+                        error: (e) => this.messageService.showErrorMessage("Usuario o contraseña incorrectos")
                     }
                 );
 

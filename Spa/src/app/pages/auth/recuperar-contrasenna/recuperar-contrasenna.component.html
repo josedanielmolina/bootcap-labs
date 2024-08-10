@@ -1,1 +1,70 @@
-<p>recuperar-contrasenna works!</p>
+<app-loading [loading]="loading"></app-loading>
+
+@if (!validacionCorreoExitosa) {
+    <div class="container mx-auto mt-5">
+    <h1>Ingrese correo de recuperacion</h1>
+
+    @if (errorMessage != '') {
+    <div class="bg-red-500 text-white p-2 mb-4 rounded">
+        {{ errorMessage }}
+    </div>
+    }
+
+    <mat-form-field class="w-full">
+        <mat-label>Correo</mat-label>
+        <input matInput type="text" id="usuario" [(ngModel)]="correo" />
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" class="self-end" (click)="onRecuperarContrasenna()">
+        Recuperar Contraseña
+    </button>
+</div>
+}
+
+@if (validacionCorreoExitosa && !validacionCodigoExitosa) {
+    <div class="container mx-auto mt-5">
+        <h1>Ingrese codigo de validacion</h1>
+        <h2>Se ha enviado un codigo de validacion a su correo</h2>
+
+        @if (errorMessage != '') {
+        <div class="bg-red-500 text-white p-2 mb-4 rounded">
+            {{ errorMessage }}
+        </div>
+        }
+
+        <mat-form-field class="w-full">
+            <mat-label>Codigo</mat-label>
+            <input matInput type="text" id="usuario" [(ngModel)]="codigoValdiacion" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="self-end" (click)="onValidarCodigo()">
+            Validar codigo de recuperacion
+        </button>
+    </div>
+}
+
+@if (validacionCorreoExitosa && validacionCodigoExitosa) {
+    <div class="container mx-auto mt-5">
+        <h1>Escriba la nueva contraseña</h1>
+
+        @if (errorMessage != '') {
+        <div class="bg-red-500 text-white p-2 mb-4 rounded">
+            {{ errorMessage }}
+        </div>
+        }
+
+        <mat-form-field class="w-full">
+            <mat-label>Ingrese contraseña nueva</mat-label>
+            <input matInput type="text" id="usuario" [(ngModel)]="contrasennaNueva" />
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+            <mat-label>Escriba nuevamente la contraseña</mat-label>
+            <input matInput type="text" id="usuario" [(ngModel)]="contrasennaNuevaValidacion" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" class="self-end" (click)="onCambiarContrasenna()">
+            Validar codigo de recuperacion
+        </button>
+    </div>
+}

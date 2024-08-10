@@ -1,4 +1,4 @@
-﻿using ApiAdmin.Models;
+﻿using Api.Models;
 using AutoMapper;
 using DTO.DTO;
 

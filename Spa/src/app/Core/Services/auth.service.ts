@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ChangePasswordDTO } from '../Models/ChangePassword.model';
 
 
 
@@ -8,13 +9,13 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class SeguridadService {
+export class AuthService {
 
     private readonly llaveToken = 'token';
     private readonly llaveExpiracion = 'token-expiracion';
     private readonly campoRol = 'http://schemas.microsoft.com/ws/2008/06/identity/claims/role';
 
-    private url = 'https://localhost:44371/api/Autorizacion';
+    private url = 'https://localhost:7232/api/Auth';
 
 
     constructor(private http: HttpClient) { }
@@ -23,9 +24,21 @@ export class SeguridadService {
         return this.http.post<any>(`${this.url}/login`, credenciales)
     }
 
-    guardarToken(token: any) {
-        localStorage.setItem(this.llaveToken, token.Autorizacion.Token);
-        localStorage.setItem(this.llaveExpiracion, token.Autorizacion.Expiration.toString());
+    validarCorreo(correo: string): Observable<any> {
+        return this.http.get<any>(`${this.url}/validar-correo/${correo}`);
+    }
+
+    validarCodigo(correo: string, codigo: string): Observable<void> {
+        return this.http.get<void>(`${this.url}/validar-codigo/${correo}/${codigo}`);
+    }
+
+    changePassword(changePasswordDTO: ChangePasswordDTO): Observable<void> {
+        return this.http.post<void>(`${this.url}/cambiar-contrasena`, changePasswordDTO);
+      }
+
+    guardarToken(resp: any) {
+        localStorage.setItem(this.llaveToken, resp.Token);
+        localStorage.setItem(this.llaveExpiracion, resp.Expiration.toString());
     }
 
     obtenerCampoJWT(campo: string): string {
@@ -65,7 +78,6 @@ export class SeguridadService {
     logout() {
         localStorage.removeItem(this.llaveToken);
         localStorage.removeItem(this.llaveExpiracion);
-        localStorage.removeItem('modulos');
     }
 
 

@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Empleado } from '../../../Core/Models/Empleado.interface';
 import { EmpleadoService } from '../../../Core/Services/empleado.service';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatIcon } from '@angular/material/icon';
 import { MessageService } from '../../../Core/Mensajes/message.service';
 import { Router } from '@angular/router';
+import { Empleado } from '../../../Core/Models/Empleado.model';
 
 
 @Component({

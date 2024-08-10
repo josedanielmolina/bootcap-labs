@@ -1,5 +1,4 @@
-﻿using ApiAdmin.Exceptions;
-using ApiAdmin.Models;
+﻿using Api.Models;
 using ApiAdmin.Repository.Base;
 using AutoMapper;
 using DTO.DTO;
@@ -20,7 +19,7 @@ namespace ApiAdmin.Features.Empleados
                 try
                 {
                     var entity = _mapper.Map<Empleado>(empleado);
-                    entity.CodigoRH = Guid.NewGuid().ToString();
+                    entity.CodigoRh = Guid.NewGuid().ToString();
 
                     await _unitOfWork.EmpleadoRepository.Add(entity);
                     await _unitOfWork.SaveChangesAsync();

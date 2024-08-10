@@ -1,4 +1,4 @@
-﻿using ApiAdmin.Models;
+﻿using Api.Models;
 using ApiAdmin.Repository.Base;
 using DTO.DTO;
 using DTO.Event;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace ApiAdmin.Models;
+namespace Api.Models;
 
 public partial class AppDbContext : DbContext
 {
@@ -16,6 +16,8 @@ public partial class AppDbContext : DbContext
     public virtual DbSet<Backlogsevent> Backlogsevents { get; set; }
 
     public virtual DbSet<Empleado> Empleados { get; set; }
+
+    public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -57,7 +59,7 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.Cargo)
                 .IsRequired()
                 .HasMaxLength(50);
-            entity.Property(e => e.CodigoRH)
+            entity.Property(e => e.CodigoRh)
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("CodigoRH");
@@ -72,6 +74,33 @@ public partial class AppDbContext : DbContext
                 .HasForeignKey(d => d.AreaEmpresaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_empleados_areasempresa");
+        });
+
+        modelBuilder.Entity<Usuario>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("usuarios");
+
+            entity.HasIndex(e => e.Correo, "correo").IsUnique();
+
+            entity.Property(e => e.Id)
+                .HasColumnType("int(11)")
+                .HasColumnName("id");
+            entity.Property(e => e.CodigoValidacion).HasMaxLength(255);
+            entity.Property(e => e.Contrasena)
+                .IsRequired()
+                .HasMaxLength(255)
+                .HasColumnName("contrasena");
+            entity.Property(e => e.Correo)
+                .IsRequired()
+                .HasMaxLength(100)
+                .HasColumnName("correo");
+            entity.Property(e => e.FechaExpiracionCodigo).HasColumnType("datetime");
+            entity.Property(e => e.Nombre)
+                .IsRequired()
+                .HasMaxLength(100)
+                .HasColumnName("nombre");
         });
 
         OnModelCreatingPartial(modelBuilder);

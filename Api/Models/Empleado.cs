@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ApiAdmin.Models;
+namespace Api.Models;
 
 public partial class Empleado
 {
@@ -13,7 +13,7 @@ public partial class Empleado
 
     public string Cargo { get; set; }
 
-    public string CodigoRH { get; set; }
+    public string CodigoRh { get; set; }
 
     public int AreaEmpresaId { get; set; }
 

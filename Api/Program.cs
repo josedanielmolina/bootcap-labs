@@ -1,13 +1,15 @@
 using ApiAdmin;
 using ApiAdmin.Features.Empleados;
-using ApiAdmin.Middleware;
-using ApiAdmin.Models;
 using ApiAdmin.Repository.Base;
 using Hangfire;
 using Hangfire.MySql;
 using HttpCall;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using System.Text;
+using Api.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +32,6 @@ builder.Services.AddCors(options =>
         });
 });
 
-
 builder.Host.UseSerilog(Log.Logger);
 
 builder.Services.AddDbContext<AppDbContext>(
@@ -40,6 +41,13 @@ builder.Services.AddDbContext<AppDbContext>(
         });
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+builder.Services.AddControllersWithViews().
+        AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+            options.JsonSerializerOptions.PropertyNamingPolicy = null;
+        });
 
 // Llamadas Http
 builder.Services.AddHttpClient<IApiAuthHttpCall, ApiAuthHttpCall>(service =>
@@ -71,6 +79,28 @@ var connectionString = builder.Configuration.GetConnectionString("HangfireConnec
 
 builder.Services.AddScoped<DarAltaEmpleadoJob>();
 
+// Configuración de autenticación JWT
+var jwtSettings = configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings.GetValue<string>("SecretKey");
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings.GetValue<string>("Issuer"),
+        ValidAudience = jwtSettings.GetValue<string>("Audience"),
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+    };
+});
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
@@ -79,22 +109,17 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
 //app.UseHangfireDashboard();
 //var recurringJobManager = app.Services.GetRequiredService<IRecurringJobManager>();
 //recurringJobManager.AddOrUpdate<DarAltaEmpleadoJob>("DarAltaEmpleadoJob", x => x.Execute(), Cron.Minutely);
-
 
 app.UseHttpsRedirection();
 
 app.UseCors("AllowAll");
 
+app.UseAuthentication(); // Añadir autenticación
 app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseMiddleware<ExceptionMiddleware>();
-
 app.Run();
-
-

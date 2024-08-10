@@ -3,7 +3,7 @@ using AutoMapper;
 using DTO.DTO;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers.Empresa
+namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

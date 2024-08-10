@@ -1,0 +1,5 @@
+<h1>Numero Actual: {{ contador }}</h1>
+
+<input type="number" [(ngModel)]="inputIncrementador" style="border: 2px solid;">
+
+<button (click)="onAumentarContador()">Aumentar en {{ inputIncrementador }}</button>

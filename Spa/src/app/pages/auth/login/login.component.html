@@ -8,7 +8,7 @@
 
         <mat-form-field class="w-full">
           <mat-label>Correo</mat-label>
-          <input matInput type="text" id="usuario" formControlName="usuario">
+          <input matInput type="text" id="usuario" formControlName="correo">
         </mat-form-field>
 
         <mat-form-field class="w-full">
@@ -19,6 +19,11 @@
         <button mat-raised-button color="primary" type="submit" [disabled]="formulario.invalid" class="self-end">
           Enviar
         </button>
+
+        <a mat-raised-button [routerLink]="['/recuperar-contrasenna']" routerLinkActive="router-link-active"  color="primary" type="submit" class="self-end">
+            Recuperar Contraseña
+        </a>
+
       </div>
     </form>
   </div>

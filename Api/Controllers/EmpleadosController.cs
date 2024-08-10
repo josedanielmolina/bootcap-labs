@@ -1,10 +1,10 @@
-﻿using ApiAdmin.Models;
+﻿using Api.Models;
 using ApiAdmin.Repository.Base;
 using AutoMapper;
 using DTO.DTO;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Api.Controllers.Empresa
+namespace Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -23,7 +23,7 @@ namespace Api.Controllers.Empresa
         public async Task<IActionResult> CreateEmpleado(EmpleadoDTO empleado)
         {
             var entity = _mapper.Map<Empleado>(empleado);
-            entity.CodigoRH = Guid.NewGuid().ToString();
+            entity.CodigoRh = Guid.NewGuid().ToString();
             await _unitOfWork.EmpleadoRepository.Add(entity);
             await _unitOfWork.SaveChangesAsync();
             return Ok();
@@ -57,7 +57,7 @@ namespace Api.Controllers.Empresa
         [HttpGet("GetEmpleadoByCodigoRH/{codigoRH}")]
         public async Task<IActionResult> GetEmpleados(string codigoRH)
         {
-            var empleados = await _unitOfWork.EmpleadoRepository.GetSingleAsync(x => x.CodigoRH == codigoRH);
+            var empleados = await _unitOfWork.EmpleadoRepository.GetSingleAsync(x => x.CodigoRh == codigoRH);
             return Ok(_mapper.Map<EmpleadoDTO>(empleados));
         }
 

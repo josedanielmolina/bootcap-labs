@@ -10,7 +10,7 @@ import { MessageService } from '../../../Core/Mensajes/message.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AreasEmpresaService } from '../../../Core/Services/areas-empresa.service';
 import { MatSelectModule } from '@angular/material/select';
-import { Areasempresa } from '../../../Core/Models/Areasempresa.interface';
+import { Areasempresa } from '../../../Core/Models/Areasempresa.model';
 
 @Component({
     selector: 'app-form-empleado',
