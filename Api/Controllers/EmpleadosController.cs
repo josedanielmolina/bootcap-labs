@@ -1,4 +1,4 @@
-﻿using Api.Models;
+﻿using Api.Empresa.Models;
 using ApiAdmin.Repository.Base;
 using AutoMapper;
 using DTO.DTO;

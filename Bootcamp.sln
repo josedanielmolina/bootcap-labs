@@ -1,0 +1,90 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.APIS", "2.APIS", "{7B73E12C-1A95-4ACA-B3F1-9ED6F9EE2FBB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Commons", "Commons", "{4D951CEF-A91A-4867-9AFE-FC83C9EABD91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{9641504F-33AF-4A4E-AF16-90BBCA0A8237}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.UI", "1.UI", "{1D4898CA-AF6A-4308-A11E-6F7055E8713D}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Spa", "Spa\", "{808FBA4C-BD9E-4DAC-8A6B-92D7092388CE}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52012"
+		Debug.AspNetCompiler.PhysicalPath = "Spa\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52012\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52012"
+		Release.AspNetCompiler.PhysicalPath = "Spa\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52012\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52012"
+		SlnRelativePath = "Spa\"
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.Empresa", "Api\Api.Empresa.csproj", "{9135615A-96C8-4914-925C-29155B4194B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.RabbitMQ.Consumer", "Api.RabbitMQ.Consumer\Api.RabbitMQ.Consumer.csproj", "{623DB4DE-A2EC-4FED-B3AC-AC36334BAD27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api.RabbitMQ.Producer", "Api.RabbitMQ.Producer\Api.RabbitMQ.Producer.csproj", "{9727E06C-5611-40C7-B2F6-C6FDD0031E9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppsConsola", "AppsConsola", "{A60D9084-CAFC-4B52-AD84-7E5FC2C70CCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcesadorTrasnferenciasService", "ProcesadorTrasnferenciasService\ProcesadorTrasnferenciasService.csproj", "{3BE03B10-0250-4D38-9D84-54D733321648}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9641504F-33AF-4A4E-AF16-90BBCA0A8237}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9641504F-33AF-4A4E-AF16-90BBCA0A8237}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9641504F-33AF-4A4E-AF16-90BBCA0A8237}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9641504F-33AF-4A4E-AF16-90BBCA0A8237}.Release|Any CPU.Build.0 = Release|Any CPU
+		{808FBA4C-BD9E-4DAC-8A6B-92D7092388CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{808FBA4C-BD9E-4DAC-8A6B-92D7092388CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{808FBA4C-BD9E-4DAC-8A6B-92D7092388CE}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{808FBA4C-BD9E-4DAC-8A6B-92D7092388CE}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{9135615A-96C8-4914-925C-29155B4194B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9135615A-96C8-4914-925C-29155B4194B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9135615A-96C8-4914-925C-29155B4194B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9135615A-96C8-4914-925C-29155B4194B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{623DB4DE-A2EC-4FED-B3AC-AC36334BAD27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{623DB4DE-A2EC-4FED-B3AC-AC36334BAD27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{623DB4DE-A2EC-4FED-B3AC-AC36334BAD27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{623DB4DE-A2EC-4FED-B3AC-AC36334BAD27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9727E06C-5611-40C7-B2F6-C6FDD0031E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9727E06C-5611-40C7-B2F6-C6FDD0031E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9727E06C-5611-40C7-B2F6-C6FDD0031E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9727E06C-5611-40C7-B2F6-C6FDD0031E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE03B10-0250-4D38-9D84-54D733321648}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE03B10-0250-4D38-9D84-54D733321648}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE03B10-0250-4D38-9D84-54D733321648}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE03B10-0250-4D38-9D84-54D733321648}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9641504F-33AF-4A4E-AF16-90BBCA0A8237} = {4D951CEF-A91A-4867-9AFE-FC83C9EABD91}
+		{808FBA4C-BD9E-4DAC-8A6B-92D7092388CE} = {1D4898CA-AF6A-4308-A11E-6F7055E8713D}
+		{9135615A-96C8-4914-925C-29155B4194B2} = {7B73E12C-1A95-4ACA-B3F1-9ED6F9EE2FBB}
+		{623DB4DE-A2EC-4FED-B3AC-AC36334BAD27} = {7B73E12C-1A95-4ACA-B3F1-9ED6F9EE2FBB}
+		{9727E06C-5611-40C7-B2F6-C6FDD0031E9B} = {7B73E12C-1A95-4ACA-B3F1-9ED6F9EE2FBB}
+		{3BE03B10-0250-4D38-9D84-54D733321648} = {A60D9084-CAFC-4B52-AD84-7E5FC2C70CCA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B5B12BA-73E3-4644-A7F8-C599BD56BE1F}
+	EndGlobalSection
+EndGlobal

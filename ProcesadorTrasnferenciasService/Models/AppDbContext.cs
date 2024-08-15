@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace Api.Empresa.Models;
+namespace Api.RabbitMQ.Consumer.Models;
 
 public partial class AppDbContext : DbContext
 {
-    public AppDbContext(DbContextOptions<AppDbContext> options)
-        : base(options)
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
+        // Configura tu cadena de conexión aquí
+        optionsBuilder.UseMySQL("server=localhost;port=5000;database=bootcamp_lab;default command timeout=0;user=root;password=admin;SslMode=none;Convert Zero Datetime=True;AllowPublicKeyRetrieval=True;");
     }
-
     public virtual DbSet<Areasempresa> Areasempresas { get; set; }
 
     public virtual DbSet<Backlogsevent> Backlogsevents { get; set; }
 
     public virtual DbSet<Empleado> Empleados { get; set; }
+
+    public virtual DbSet<Transferencia> Transferencias { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
@@ -69,6 +71,16 @@ public partial class AppDbContext : DbContext
                 .HasForeignKey(d => d.AreaEmpresaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_empleados_areasempresa");
+        });
+
+        modelBuilder.Entity<Transferencia>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+
+            entity.ToTable("transferencias");
+
+            entity.Property(e => e.Fecha).HasColumnType("datetime");
+            entity.Property(e => e.Monto).HasPrecision(20, 6);
         });
 
         modelBuilder.Entity<Usuario>(entity =>

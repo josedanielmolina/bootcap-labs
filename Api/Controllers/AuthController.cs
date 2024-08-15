@@ -1,4 +1,4 @@
-﻿using Api.Models;
+﻿using Api.Empresa.Models;
 using DTO.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

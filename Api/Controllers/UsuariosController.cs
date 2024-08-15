@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BCrypt.Net;
-using Api.Models;
 using DTO.DTO;
+using Api.Empresa.Models;
 
 [ApiController]
 [Route("api/[controller]")]

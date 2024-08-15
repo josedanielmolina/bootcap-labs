@@ -1,15 +1,13 @@
 using ApiAdmin;
-using ApiAdmin.Features.Empleados;
 using ApiAdmin.Repository.Base;
 using Hangfire;
 using Hangfire.MySql;
-using HttpCall;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 using System.Text;
-using Api.Models;
+using Api.Empresa.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,7 +35,7 @@ builder.Host.UseSerilog(Log.Logger);
 builder.Services.AddDbContext<AppDbContext>(
         (DbContextOptionsBuilder options) =>
         {
-            options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection"));
+            options.UseMySQL(builder.Configuration["DatabaseContext"]);
         });
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
@@ -49,11 +47,6 @@ builder.Services.AddControllersWithViews().
             options.JsonSerializerOptions.PropertyNamingPolicy = null;
         });
 
-// Llamadas Http
-builder.Services.AddHttpClient<IApiAuthHttpCall, ApiAuthHttpCall>(service =>
-{
-    service.BaseAddress = new Uri("https://localhost:7213/api/Domain/");
-});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -63,9 +56,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// UsesCases
-builder.Services.AddScoped<CreateEmpleadoUseCase>();
-builder.Services.AddScoped<DarAltaEmpleadoNotification>();
 
 var connectionString = builder.Configuration.GetConnectionString("HangfireConnection");
 
@@ -77,7 +67,6 @@ var connectionString = builder.Configuration.GetConnectionString("HangfireConnec
 
 //builder.Services.AddHangfireServer();
 
-builder.Services.AddScoped<DarAltaEmpleadoJob>();
 
 // Configuración de autenticación JWT
 var jwtSettings = configuration.GetSection("JwtSettings");

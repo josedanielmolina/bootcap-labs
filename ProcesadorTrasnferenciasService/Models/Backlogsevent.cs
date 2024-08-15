@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Api.Empresa.Models;
+namespace Api.RabbitMQ.Consumer.Models;
 
 public partial class Backlogsevent
 {
